@@ -1,6 +1,12 @@
 import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url: "mysql://prisma:prisma123456@155.94.197.88/prisma"
+    }
+  }
+});
 
 async function main() {
   const users = await prisma.prisma_user.findMany({
